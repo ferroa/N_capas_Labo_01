@@ -31,4 +31,9 @@ public class Jugador {
                 ", golesMarcados=" + golesMarcados +
                 '}';
     }
+
+    // Método para agregar un gol
+    public void gol() {
+        this.golesMarcados++;
+    }
 }
