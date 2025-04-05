@@ -6,8 +6,8 @@ import java.util.stream.Stream;
 
 
 public class Partido {
-    private Equipo equipoA;
-    private Equipo equipoB;
+    private final Equipo equipoA;
+    private final Equipo equipoB;
     int golesEquipoA;
     int golesEquipoB;
 
@@ -22,8 +22,8 @@ public class Partido {
     // Método para marcar un gol
     public void realizarPartido() {
         Random rand = new Random();
-        golesEquipoA = rand.nextInt(10);
-        golesEquipoB = rand.nextInt(10);
+        golesEquipoA = rand.nextInt(7);
+        golesEquipoB = rand.nextInt(7);
 
         for (int i = 0; i < golesEquipoA; i++) {
             int a = rand.nextInt(equipoA.listarJugadores().size());
@@ -37,15 +37,15 @@ public class Partido {
     }
 
     // Método para definir el equipo ganador
-    public Equipo ganador() {
+    public String ganador() {
         if (golesEquipoA > golesEquipoB) {
-            return equipoA;
+            return equipoA.nombre();
         }
         else if (golesEquipoB > golesEquipoA) {
-            return equipoB;
+            return equipoB.nombre();
         }
         else
-            return null; // En caso de un empate
+            return "Empate"; // En caso de un empate
     }
 
     // Método para definir el jugador con más goles de un partido
@@ -55,14 +55,13 @@ public class Partido {
                 .orElse(null);
     }
 
-
+    // Resumen del partido
     @Override
     public String toString() {
         return "Partido" +
                 "\n Equipo A = " + equipoA.nombre() + ", Total de goles = " + golesEquipoA +
                 "\n Equipo B = " + equipoB.nombre() + ", Total de goles = " + golesEquipoB +
-                "\n Ganador = " + ganador().nombre() +
+                "\n Ganador = " + ganador() +
                 "\n Jugador con mas goles del partido = " + goleador().getNombre() + ", Total de goles = " + goleador().getGolesMarcados();
-
     }
 }
