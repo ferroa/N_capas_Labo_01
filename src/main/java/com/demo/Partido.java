@@ -1,6 +1,8 @@
 package com.demo;
 
+import java.util.Comparator;
 import java.util.Random;
+import java.util.stream.Stream;
 
 
 public class Partido {
@@ -46,13 +48,21 @@ public class Partido {
             return null; // En caso de un empate
     }
 
+    // Método para definir el jugador con más goles de un partido
+    public Jugador goleador (){
+        return Stream.concat(equipoA.jugadores.stream(), equipoB.jugadores.stream())
+                .max(Comparator.comparingInt(Jugador::getGolesMarcados))
+                .orElse(null);
+    }
+
 
     @Override
     public String toString() {
         return "Partido" +
                 "\n Equipo A = " + equipoA.nombre() + ", Total de goles = " + golesEquipoA +
                 "\n Equipo B = " + equipoB.nombre() + ", Total de goles = " + golesEquipoB +
-                "\n Ganador = " + ganador().nombre();
+                "\n Ganador = " + ganador().nombre() +
+                "\n Jugador con mas goles del partido = " + goleador().getNombre() + ", Total de goles = " + goleador().getGolesMarcados();
 
     }
 }
