@@ -46,13 +46,13 @@ public class Partido {
             return null; // En caso de un empate
     }
 
-    // Método para mostrar los detalles del partido
+
     @Override
     public String toString() {
-        return "Partido{" +
-                "equipoA=" + equipoA + '}' +
-                ", equipoB=" + equipoB + '}' +
-                ", golesEquipoA=" + golesEquipoA + '}' +
-                ", golesEquipoB=" + golesEquipoB;
+        return "Partido" +
+                "\n Equipo A = " + equipoA.nombre() + ", Total de goles = " + golesEquipoA +
+                "\n Equipo B = " + equipoB.nombre() + ", Total de goles = " + golesEquipoB +
+                "\n Ganador = " + ganador().nombre();
+
     }
 }

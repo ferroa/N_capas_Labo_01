@@ -27,4 +27,9 @@ public class Equipo {
     public Jugador buscarJugador(int index) {
         return jugadores.get(index);
     }
+
+    // Obtener el nombre del equipo
+    public String nombre() {
+        return nombre;
+    }
 }
